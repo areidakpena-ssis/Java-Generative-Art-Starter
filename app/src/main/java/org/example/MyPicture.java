@@ -18,24 +18,18 @@ public class MyPicture {
         // Fill the background
         SimpleGraphics.fillBackground("white");
 
-        // make some variables available
-        String[] colors = {"red", "green", "blue", "cyan", "magenta", "yellow"};
 
-        double triangleHeight = height / 5;
-        double triangleWidth = width / 3;
-
-        // Draw the tessellation
-        // code for red triangles
-        SimpleGraphics.setFillColor(colors[0]);
-
-        // call fill
+        // Draw a red sun
+        SimpleGraphics.setFillColor("red");
         SimpleGraphics.fillCircle(450, 50, 50);
 
+        // Draw a mountain with gray triangles
         SimpleGraphics.setFillColor("#827e7e"); // relatively dark gray
         SimpleGraphics.fillTriangle(300, 150, 400, 20, 350, 150);
         SimpleGraphics.setFillColor("#c7c1c1"); // lighter gray
         SimpleGraphics.fillTriangle(350, 150, 400, 20, 550, 150);
 
+        // Draw the horizon
         SimpleGraphics.setOutlineColor("black");
         SimpleGraphics.setLineThickness(1);
         SimpleGraphics.drawLine(0, 150, 600, 150);
@@ -50,7 +44,7 @@ public class MyPicture {
 
         SimpleGraphics.setOutlineColor("blue");
         SimpleGraphics.setLineThickness(8);
-        SimpleGraphics.drawCurve(riverPoints);
+        SimpleGraphics.drawSmoothCurve(riverPoints);
     }
 
     public static void main(String[] args) {

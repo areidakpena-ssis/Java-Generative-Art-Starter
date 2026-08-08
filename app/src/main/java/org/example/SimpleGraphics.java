@@ -138,7 +138,7 @@ public class SimpleGraphics extends Application {
      * (This draws straight segments between points; using true bezier curves is a
      * good extension if you want smoother bends -- see GraphicsContext.bezierCurveTo.)
      */
-    public static void drawCurve(List<double[]> points) {
+    public static void drawZigZagCurve(List<double[]> points) {
         if (points.size() < 2) return;
         gc.beginPath();
         gc.moveTo(points.get(0)[0], points.get(0)[1]);
@@ -146,6 +146,43 @@ public class SimpleGraphics extends Application {
             double[] p = points.get(i);
             gc.lineTo(p[0], p[1]);
         }
+        gc.stroke();
+    }
+
+    /**
+     * Draws a smooth curve that bends through a list of points, in order (the curve
+     * passes exactly through every point given, not just near them). Points are given
+     * as a list of double[]{x, y} pairs, e.g.:
+     *   List.of(new double[]{100, 150}, new double[]{300, 200}, new double[]{200, 350})
+     */
+    public static void drawSmoothCurve(List<double[]> points) {
+        int n = points.size();
+        if (n < 2) return;
+        if (n == 2) {
+            gc.strokeLine(points.get(0)[0], points.get(0)[1], points.get(1)[0], points.get(1)[1]);
+            return;
+        }
+ 
+        gc.beginPath();
+        gc.moveTo(points.get(0)[0], points.get(0)[1]);
+ 
+        // Catmull-Rom spline through the points, drawn as a sequence of cubic bezier
+        // segments (one per gap between consecutive points). At the ends, the first/last
+        // point is reused as its own "extra" neighbor so the curve doesn't overshoot.
+        for (int i = 0; i < n - 1; i++) {
+            double[] p0 = points.get(Math.max(i - 1, 0));
+            double[] p1 = points.get(i);
+            double[] p2 = points.get(i + 1);
+            double[] p3 = points.get(Math.min(i + 2, n - 1));
+ 
+            double cp1x = p1[0] + (p2[0] - p0[0]) / 6.0;
+            double cp1y = p1[1] + (p2[1] - p0[1]) / 6.0;
+            double cp2x = p2[0] - (p3[0] - p1[0]) / 6.0;
+            double cp2y = p2[1] - (p3[1] - p1[1]) / 6.0;
+ 
+            gc.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2[0], p2[1]);
+        }
+ 
         gc.stroke();
     }
 
