@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * SimpleGraphicsStarter
+ * SimpleGraphics
  * ----------------------
  * A small drawing library built on top of JavaFX's Canvas. It plays the same role as
  * simple_graphics.py in the Python version of this project: functions for drawing basic
@@ -23,12 +23,12 @@ import java.util.Map;
  * Usage: write your scene in a separate class (e.g. MyPicture.java) inside a method with
  * the signature drawPicture(double width, double height), then start the window with:
  *
- *     SimpleGraphicsStarter.start(MyPicture::drawPicture, 600, 400);
+ *     SimpleGraphics.start(MyPicture::drawPicture, 600, 400);
  *
  * If you want to ADD new drawing functions (e.g. fillStar, drawHexagon), add them to this
  * file. Everyday scene-drawing code belongs in MyPicture.java instead.
  */
-public class SimpleGraphicsStarter extends Application {
+public class SimpleGraphics extends Application {
 
     // ----- internal state (students shouldn't need to touch this section) -----
     private static GraphicsContext gc;
@@ -44,7 +44,7 @@ public class SimpleGraphicsStarter extends Application {
 
     /**
      * Launches the drawing window and calls your drawPicture function once the canvas is ready.
-     * Example: SimpleGraphicsStarter.start(MyPicture::drawPicture, 600, 400);
+     * Example: SimpleGraphics.start(MyPicture::drawPicture, 600, 400);
      */
     public static void start(PictureDrawer drawer, double width, double height) {
         pictureDrawer = drawer;

@@ -10,13 +10,13 @@ import java.util.List;
  * variables to help organize your code.
  *
  * If you want to enhance the functionality of the drawing library itself (e.g. add
- * a new shape function), put that in SimpleGraphicsStarter.java instead.
+ * a new shape function), put that in SimpleGraphics.java instead.
  */
 public class MyPicture {
 
     public static void drawPicture(double width, double height) {
         // Fill the background
-        SimpleGraphicsStarter.fillBackground("white");
+        SimpleGraphics.fillBackground("white");
 
         // make some variables available
         String[] colors = {"red", "green", "blue", "cyan", "magenta", "yellow"};
@@ -26,19 +26,19 @@ public class MyPicture {
 
         // Draw the tessellation
         // code for red triangles
-        SimpleGraphicsStarter.setFillColor(colors[0]);
+        SimpleGraphics.setFillColor(colors[0]);
 
         // call fill
-        SimpleGraphicsStarter.fillCircle(450, 50, 50);
+        SimpleGraphics.fillCircle(450, 50, 50);
 
-        SimpleGraphicsStarter.setFillColor("#827e7e"); // relatively dark gray
-        SimpleGraphicsStarter.fillTriangle(300, 150, 400, 20, 350, 150);
-        SimpleGraphicsStarter.setFillColor("#c7c1c1"); // lighter gray
-        SimpleGraphicsStarter.fillTriangle(350, 150, 400, 20, 550, 150);
+        SimpleGraphics.setFillColor("#827e7e"); // relatively dark gray
+        SimpleGraphics.fillTriangle(300, 150, 400, 20, 350, 150);
+        SimpleGraphics.setFillColor("#c7c1c1"); // lighter gray
+        SimpleGraphics.fillTriangle(350, 150, 400, 20, 550, 150);
 
-        SimpleGraphicsStarter.setOutlineColor("black");
-        SimpleGraphicsStarter.setLineThickness(1);
-        SimpleGraphicsStarter.drawLine(0, 150, 600, 150);
+        SimpleGraphics.setOutlineColor("black");
+        SimpleGraphics.setLineThickness(1);
+        SimpleGraphics.drawLine(0, 150, 600, 150);
 
         // Define the points the curve should bend through
         List<double[]> riverPoints = List.of(
@@ -48,13 +48,13 @@ public class MyPicture {
             new double[]{500, 500}  // End point
         );
 
-        SimpleGraphicsStarter.setOutlineColor("blue");
-        SimpleGraphicsStarter.setLineThickness(8);
-        SimpleGraphicsStarter.drawCurve(riverPoints);
+        SimpleGraphics.setOutlineColor("blue");
+        SimpleGraphics.setLineThickness(8);
+        SimpleGraphics.drawCurve(riverPoints);
     }
 
     public static void main(String[] args) {
         // Launch the window; only edit the starting canvas dimensions if you'd like to.
-        SimpleGraphicsStarter.start(MyPicture::drawPicture, 600, 400);
+        SimpleGraphics.start(MyPicture::drawPicture, 600, 400);
     }
 }

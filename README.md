@@ -1,4 +1,4 @@
-# SimpleGraphicsStarter (Java / JavaFX)
+# SimpleGraphics (Java / JavaFX)
 
 Starter code for creating a static image with JavaFX's Canvas — the Java version of the tessellation
 starter used in the Intro to GitHub unit.
@@ -20,7 +20,7 @@ This project is the vehicle for the Intro to GitHub unit. Working through it, yo
 1. **Fork** the starter repository — this makes your own linked copy on GitHub.
 2. **Clone** your fork to your computer (or open it in the provided project once your teacher shares the
    Gradle setup).
-3. **Read** through `SimpleGraphicsStarter.java` to see what drawing functions are already available to
+3. **Read** through `SimpleGraphics.java` to see what drawing functions are already available to
    you.
 4. **Write code** in `MyPicture.java`'s `drawPicture(...)` method to draw your assigned piece of the
    tessellation, calling functions from the library.
@@ -36,7 +36,7 @@ This project is the vehicle for the Intro to GitHub unit. Working through it, yo
 
 Two Java files:
 
-### `SimpleGraphicsStarter.java`
+### `SimpleGraphics.java`
 
 This is the drawing library — an API of functions for drawing basic shapes, adjusting the state of the
 canvas (like fill color or line thickness), and a couple of color helpers. You generally shouldn't need to
@@ -46,29 +46,29 @@ edit this file for the tessellation task; you call its functions from `MyPicture
 to everything you draw afterward, until you change them again:
 
 ```java
-SimpleGraphicsStarter.setFillColor("green");     // inside color for shapes
-SimpleGraphicsStarter.setOutlineColor("black");  // border color for shapes
-SimpleGraphicsStarter.setLineThickness(2);       // thickness of lines/borders
+SimpleGraphics.setFillColor("green");     // inside color for shapes
+SimpleGraphics.setOutlineColor("black");  // border color for shapes
+SimpleGraphics.setLineThickness(2);       // thickness of lines/borders
 ```
 
 **Drawing functions:**
 
 ```java
-SimpleGraphicsStarter.fillBackground("white");
-SimpleGraphicsStarter.drawLine(x1, y1, x2, y2);
-SimpleGraphicsStarter.fillCircle(centerX, centerY, radius);
-SimpleGraphicsStarter.drawCircle(centerX, centerY, radius);
-SimpleGraphicsStarter.fillTriangle(x1, y1, x2, y2, x3, y3);
-SimpleGraphicsStarter.drawTriangle(x1, y1, x2, y2, x3, y3);
-SimpleGraphicsStarter.fillRectangle(x, y, width, height);
-SimpleGraphicsStarter.drawRectangle(x, y, width, height);
-SimpleGraphicsStarter.drawCurve(pointsList);
+SimpleGraphics.fillBackground("white");
+SimpleGraphics.drawLine(x1, y1, x2, y2);
+SimpleGraphics.fillCircle(centerX, centerY, radius);
+SimpleGraphics.drawCircle(centerX, centerY, radius);
+SimpleGraphics.fillTriangle(x1, y1, x2, y2, x3, y3);
+SimpleGraphics.drawTriangle(x1, y1, x2, y2, x3, y3);
+SimpleGraphics.fillRectangle(x, y, width, height);
+SimpleGraphics.drawRectangle(x, y, width, height);
+SimpleGraphics.drawCurve(pointsList);
 ```
 
 Colors can be given as names (`"red"`, `"cyan"`, `"magenta"`, ...) or hex codes (`"#c7c1c1"`).
 
 If you want to **enhance the library** — for example, adding a `fillStar(...)` or `drawHexagon(...)`
-function — that new function belongs in `SimpleGraphicsStarter.java`, not `MyPicture.java`.
+function — that new function belongs in `SimpleGraphics.java`, not `MyPicture.java`.
 
 ### `MyPicture.java`
 
@@ -79,20 +79,20 @@ own code organized. It also contains `main`, which is what you'll actually run.
 ## How to Use the Code
 
 Keep both files in the same project (same package). You don't need an `import` statement between them —
-just call `SimpleGraphicsStarter.functionName(...)` directly from inside `MyPicture.java`.
+just call `SimpleGraphics.functionName(...)` directly from inside `MyPicture.java`.
 
 ```java
 public class MyPicture {
 
     public static void drawPicture(double width, double height) {
-        SimpleGraphicsStarter.fillBackground("white");
+        SimpleGraphics.fillBackground("white");
 
-        SimpleGraphicsStarter.setFillColor("green");
-        SimpleGraphicsStarter.fillTriangle(100, 100, 150, 20, 200, 100);
+        SimpleGraphics.setFillColor("green");
+        SimpleGraphics.fillTriangle(100, 100, 150, 20, 200, 100);
     }
 
     public static void main(String[] args) {
-        SimpleGraphicsStarter.start(MyPicture::drawPicture, 600, 400);
+        SimpleGraphics.start(MyPicture::drawPicture, 600, 400);
     }
 }
 ```
@@ -139,6 +139,6 @@ Using this starter code, you'll:
 
 - Fork this repository and clone your fork.
 - Write code in `MyPicture.java` to draw your assigned piece of the tessellation, using functions from
-  `SimpleGraphicsStarter.java`.
+  `SimpleGraphics.java`.
 - Commit and push your changes with clear messages, then open a pull request to contribute your piece back
   to the shared image.
